@@ -1,27 +1,37 @@
 package com.example.emre.hcoder;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.lang.*;
 import java.lang.Character;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.Vector;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 public class MainActivity extends AppCompatActivity {
+    public static final String GONDERILEN_MESAJ = "com.example.emre.MESSAGE";
 
     EditText input;
     Button button;
     TextView output;
+    Button sendUser;
 
     Map<Character, String> encodedData = new HashMap<>();
 
@@ -34,6 +44,16 @@ public class MainActivity extends AppCompatActivity {
         input = (EditText)findViewById(R.id.editText);
         button = (Button)findViewById(R.id.button);
         output = (TextView)findViewById(R.id.textView);
+        sendUser = (Button)findViewById(R.id.send_user);
+        ListView users = (ListView)findViewById(R.id.list_users);
+
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("user1");
+        list.add("user2");
+        UserAdapter adapter = new UserAdapter(list, this);
+
+        users.setAdapter(adapter);
+
 
 
 
@@ -52,7 +72,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    void mesaj_alindi(String mesaj){
+        Intent intent = new Intent(this, AlinanMesaj.class);
+        intent.putExtra(GONDERILEN_MESAJ, mesaj);
+        startActivity(intent);
 
+    }
 
 
 
@@ -170,6 +195,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
             output.setText(output.getText().toString() + "\n" + outputText);
+        
     }
 
 

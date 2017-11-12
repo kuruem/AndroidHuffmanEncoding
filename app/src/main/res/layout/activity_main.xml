@@ -10,6 +10,12 @@
     android:gravity="center"
     >
 
+
+    <ListView
+        android:id="@+id/list_users"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
@@ -35,6 +41,6 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="" />
+        android:text="Encoded Text\n" />
 
 </LinearLayout>
